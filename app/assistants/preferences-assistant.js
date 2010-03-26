@@ -39,6 +39,7 @@ PreferencesAssistant.prototype.setup = function() {
 		note that these property keys MUST match a preference key
 	*/
 	this.model = {
+		'theme-css':                sc.app.prefs.get('theme-css'),
 		'sound-enabled': 			sc.app.prefs.get('sound-enabled'),
 		'vibration-enabled': 		sc.app.prefs.get('vibration-enabled'),
 		'timeline-scrollonupdate': 	sc.app.prefs.get('timeline-scrollonupdate'),
@@ -207,6 +208,16 @@ PreferencesAssistant.prototype.setup = function() {
 	this.controller.listen('timeline-dm-getcount', Mojo.Event.propertyChange, this.saveSettings.bindAsEventListener(this));
 	
 	
+	this.controller.setupWidget('theme-css',
+		{
+			label: $L('Theme'),
+			choices: this.validThemes,
+			modelProperty:'theme-css'
+		},
+		this.model
+	);
+	this.controller.listen('theme-css', Mojo.Event.propertyChange, this.saveSettings.bindAsEventListener(this));
+
 	this.controller.setupWidget('timeline-text-size',
 		{
 			label: $L('Timeline Text Size'),
@@ -261,6 +272,17 @@ PreferencesAssistant.prototype.saveSettings = function(event) {
 		sc.app.prefs.set(key, this.model[key]);
 	}
 	
+	this.applySettings();
+	
+};
+
+
+PreferencesAssistant.prototype.applySettings = function() {
+	/*
+		set the theme
+	*/
+	Spaz.setTheme(sc.app.prefs.get('theme-css'));
+	
 };
 
 //function declares & initializes our choice arrays
@@ -303,6 +325,12 @@ PreferencesAssistant.prototype.setupChoices = function(){
 		{label:$L('Grande'),value:'grande'}, 
 		{label:$L('Venti'), value:'venti'}		
 	];
+
+	this.validThemes = [];
+	for(var z in spaz_themes) {
+		this.validThemes.push({label:$L(z),  value:z});
+	};
+
 	
 	this.validRTCursorPositions = [
 		{label:$L('Beginning'),  value:'beginning'}, 
@@ -340,6 +368,7 @@ PreferencesAssistant.prototype.cleanup = function(event) {
 	this.controller.stopListening('timeline-replies-getcount', Mojo.Event.propertyChange, this.saveSettings);
 	this.controller.stopListening('timeline-dm-getcount', Mojo.Event.propertyChange, this.saveSettings);
 	this.controller.stopListening('timeline-text-size', Mojo.Event.propertyChange, this.saveSettings);
+	this.controller.stopListening('theme-css', Mojo.Event.propertyChange, this.saveSettings);
 
 
 	Mojo.Event.stopListening(jQuery('#clear-cache-button')[0], Mojo.Event.tap, function(e) {

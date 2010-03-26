@@ -1,3 +1,14 @@
+
+/**********************************************************
+	BEGIN DREADNAUGHT THEME
+**********************************************************/
+
+
+@import url("spaz-dark.css");
+
+
+
+
 /* Put Application specific CSS here. */
 
 BODY, BODY>div[x-mojo-element=Scroller] {	
@@ -73,7 +84,7 @@ a:link, a:visited, .clickable {
 	-webkit-border-image: url(../images/dreadnaught/palm-group.png) 40 18 14 18;	
 }
 
-.palm-dark .palm-group-spaz .palm-group-title{
+.spaz-dark .palm-group-spaz .palm-group-title{
 	color:#CCC;
 }
 
@@ -977,7 +988,7 @@ div.inline-spinner {
 /*
 	Remove row separator background
 */	
-.palm-dark  .spaz-activity-spinner-container .palm-row {
+.spaz-dark  .spaz-activity-spinner-container .palm-row {
 	background:none;
 }
 	
@@ -1239,3 +1250,11 @@ BODY.palm-dashboard-notification, BODY.palm-dashboard-notification>div[x-mojo-el
 	font-size:16px;
 	color:#999;
 */}
+
+
+
+
+
+
+
+

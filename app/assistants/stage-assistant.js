@@ -101,6 +101,14 @@ StageAssistant.prototype.initialize = function() {
 		}
 	});
 	sc.app.prefs.load(); // this is sync on webOS, b/c loading from Mojo.Model.Cookie
+	
+	/*
+		load the theme
+	*/
+	// jQuery(document).ready( function() {
+	Spaz.setTheme(sc.app.prefs.get('theme-css'));
+	// });
+	
 	sc.app.twit = new scTwit(null, null, {
 		'event_mode':'jquery'
 	});

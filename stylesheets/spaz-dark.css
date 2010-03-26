@@ -1,0 +1,528 @@
+/*
+	we insert all the standard palm-dark definitions, 
+	rewritten to use the .spaz-dark selector. Dreadnaught was
+	originally built on .spaz-dark, and this lets us transition
+	more easily
+*/
+
+
+/*
+   List Dividers Styling
+   Mojo Application Framework
+   Copyright (c) 2007-2009, Palm Inc.
+   All rights reserved.
+
+*/
+
+.spaz-dark .palm-divider .label {
+  color: #AAA;
+  text-shadow: #222 0px -1px 0px;
+}
+
+.spaz-dark .palm-divider.solid {
+  height: 12px;
+  background: url(../images/dreadnaught/palm-divider-label-solid-dark.png) left center repeat-x;
+}
+
+.spaz-dark .palm-divider.labeled .left {
+  background: url(../images/dreadnaught/palm-divider-line-dark.png) right no-repeat;
+}
+/*/usr/palm/frameworks/mojo/submissions/330/images/view-menu-gradient.png*/
+.spaz-dark .palm-divider.labeled .right {
+  background-image: url(../images/dreadnaught/palm-divider-line-dark.png);
+}
+
+.spaz-dark .palm-divider.labeled.alt .right {
+  background-image: url(../images/dreadnaught/palm-divider-separator-alt-dark.png);
+}
+
+.spaz-dark .palm-divider.collapsible .right {
+  background-image: url(../images/dreadnaught/palm-divider-collapse-middle-dark.png);
+}
+
+.spaz-dark .palm-divider.collapsible .left-line {
+  background-image: url(../images/dreadnaught/palm-divider-collapse-left-dark.png);
+}
+
+.spaz-dark .palm-divider.collapsible .middle-line {
+  background-image: url(../images/dreadnaught/palm-divider-collapse-middle-dark.png);
+}
+
+.spaz-dark .palm-arrow-expanded,
+.spaz-dark .palm-arrow-closed {
+  background-image: url(../images/dreadnaught/palm-divider-arrow-dark.png);
+}
+
+.spaz-dark .palm-divider.collapsible .line {
+  background: url(../images/dreadnaught/palm-divider-collapse-left-dark.png) left -1px no-repeat;
+}
+
+.spaz-dark .palm-divider.alpha {
+  background: url(../images/dreadnaught/alpha-divider-dark.png) center left no-repeat;
+}
+
+
+
+/*
+   List Styling : Dark
+   Mojo Application Framework
+   Copyright (c) 2007-2009, Palm Inc.
+   All rights reserved.
+
+*/
+
+.spaz-dark .palm-page-header.multi-line {
+  -webkit-border-image: url(../images/dreadnaught/palm-page-header-dark.png) 35 24 13 24 repeat stretch;
+}
+
+.spaz-dark .palm-filter-open .palm-page-header,
+.spaz-dark.palm-filter-open .palm-page-header {
+  -webkit-border-image: url(../images/dreadnaught/palm-page-header-square-dark.png) 35 24 13 24 repeat stretch;
+}
+
+.spaz-dark .palm-page-header.multi-line .title {
+  color: #aaa;
+  text-shadow: #000 0px -1px 0px;
+}
+.spaz-dark .palm-page-header.multi-line .subtitle {
+  color: #888;
+}
+
+.spaz-dark .palm-group {                                            
+  -webkit-border-image: url(../images/dreadnaught/palm-group-dark.png) 40 18 18 18 repeat repeat;
+}
+
+.spaz-dark .palm-group.unlabeled {
+  -webkit-border-image: url(../images/dreadnaught/palm-group-unlabeled-dark.png) 18 18 18 18 repeat repeat;
+}
+
+.spaz-dark .palm-group-title {
+  color: #888;
+  text-shadow: #000 0px 1px 0px;
+}
+
+.spaz-dark .palm-drawer-container {
+  -webkit-border-image: url(../images/dreadnaught/palm-drawer-background-dark.png) 20 1 20 1 repeat repeat;
+}
+
+.spaz-dark .palm-row {
+  color: #fff;
+  background: url(../images/dreadnaught/list-separator-dark.png) bottom left repeat-x;
+}
+
+.spaz-dark .palm-row.disabled,
+.spaz-dark .palm-list-selector.disabled .title,
+.spaz-dark .palm-row .title.disabled {
+  color: #999999;
+}
+
+.spaz-dark .label.mv-picker-label,
+.spaz-dark .palm-row .label {
+  color: #aaa;
+  text-shadow: #222 0px -1px 0px;
+}
+
+.spaz-dark .palm-row.selected {
+  background: none;
+}
+
+.spaz-dark .palm-row.no-divider,
+.spaz-dark .palm-row.no-separator,
+.spaz-dark .palm-row.single,
+.spaz-dark .palm-row.last {
+  background: none;
+  -webkit-border-image: none;
+}
+
+.spaz-dark .palm-row.selected {
+  border: none;
+  background: none;
+  border-width: 24px 20px;
+  -webkit-border-image: url(../images/dreadnaught/selection-gradient-default.png) 24 20 24 20 repeat repeat;
+}
+
+.spaz-dark .palm-group .palm-row.selected.first {
+  -webkit-border-image: url(../images/dreadnaught/selection-gradient-first.png) 24 20 24 20 repeat repeat;
+}
+.spaz-dark .palm-group .palm-row.selected.single {
+  -webkit-border-image: url(../images/dreadnaught/selection-gradient-single.png) 24 20 24 20 repeat repeat;
+}
+.spaz-dark .palm-group .palm-row.selected.last {
+  -webkit-border-image: url(../images/dreadnaught/selection-gradient-last.png) 24 20 24 20 repeat repeat;
+}
+
+.spaz-dark .palm-row.palm-reorder-element {   
+  background:none;
+  -webkit-border-image: url(../images/dreadnaught/palm-row-dragging-dark.png) 24 20 24 20 repeat repeat;
+}
+
+.spaz-dark .palm-row.palm-delete-element {
+  background: none;
+  -webkit-border-image: url(../images/dreadnaught/palm-row-deleting-dark.png) 24 20 24 20 repeat repeat;
+}
+
+.spaz-dark .palm-row.palm-swipe-delete {
+  background: none;
+  -webkit-border-image: url(../images/dreadnaught/palm-delete-dark.png) 24 20 24 20 repeat repeat;
+}
+
+
+/*
+   Menu Styling : Dark
+   Mojo Application Framework
+   Copyright (c) 2007-2009, Palm Inc.
+   All rights reserved.
+
+*/
+
+.spaz-dark .palm-row .list-selector-triangle {
+  background: url(../images/dreadnaught/list-selector-triangle-dark.png) top no-repeat;
+}
+
+.spaz-dark .palm-row.selected .list-selector-triangle {
+  background: url(../images/dreadnaught/list-selector-triangle-dark.png) bottom no-repeat;
+}
+
+.spaz-dark .palm-popup-container {
+  -webkit-border-image: url(../images/dreadnaught/palm-popup-background-dark.png) 24 24 24 24 stretch stretch;
+}
+
+.spaz-dark .palm-popup-container .palm-popup-content {
+  margin: 17px 9px 18px 9px;
+  padding: 0px;
+  max-height: 368px;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.spaz-dark .palm-popup-container .palm-popup-fade-top {
+  top: -16px;
+}
+.spaz-dark .palm-popup-container .palm-popup-fade-top > .fade-background {
+  -webkit-border-image: url(../images/dreadnaught/palm-popup-fade-top-dark.png) 0 24 0 24 repeat repeat;
+}
+.spaz-dark .palm-popup-container .palm-popup-fade-top > .fade-arrow {
+  background: url(../images/dreadnaught/palm-popup-fade-arrow-up-dark.png) center center no-repeat;
+}
+
+.spaz-dark .palm-popup-container .palm-popup-fade-bottom {
+  bottom: -17px;
+}
+.spaz-dark .palm-popup-container .palm-popup-fade-bottom > .fade-background {
+  -webkit-border-image: url(../images/dreadnaught/palm-popup-fade-bottom-dark.png) 0 24 0 24 repeat repeat;
+}
+.spaz-dark .palm-popup-container .palm-popup-fade-bottom > .fade-arrow {
+  background: url(../images/dreadnaught/palm-popup-fade-arrow-down-dark.png) center center no-repeat;
+}
+
+
+
+/*
+   Textfield Styling : Dark
+   Mojo Application Framework
+   Copyright (c) 2007-2009, Palm Inc.
+   All rights reserved.
+
+*/
+
+.spaz-dark .filter-field-container {
+  -webkit-border-image: url(../images/dreadnaught/filter-search-dark-bg.png) 26 23 20 23 repeat repeat;
+}
+
+.spaz-dark .filter-field-container .mag-glass-icon {
+  background: url(../images/dreadnaught/filter-search-mag-dark.png) center center no-repeat;
+}
+
+.spaz-dark .search-term {
+  color: #FFF;
+}
+
+.spaz-dark .filter-field-container .previous-search-text {
+  color: #000;
+}
+
+.spaz-dark .hint-text,
+.spaz-dark .textfield-group .hint-text,
+.spaz-dark .multiline-hint-text {
+  color: #fff;
+}
+
+.spaz-dark .focused .hint-text,
+.spaz-dark .textfield-group.focused .hint-text,
+.spaz-dark .focused .multiline-hint-text {
+  color: #c3c3c3;
+}
+
+.spaz-dark .textfield-group {
+  color: #fff;
+  border-width: 15px;
+  -webkit-border-image: url(../images/dreadnaught/textfield-shadow-dark-blur.png) 15 15 15 15 stretch stretch;
+}
+.spaz-dark .textfield-group input {
+  color: #fff !important;
+}
+.spaz-dark .textfield-group.focused,
+.spaz-dark .palm-group .textfield-group.focused {
+  border-width: 15px;
+  -webkit-border-image: url(../images/dreadnaught/textfield-shadow-dark.png) 15 15 15 15 stretch stretch;
+}
+
+.spaz-dark .palm-group .textfield-group {
+  border-width: 15px;
+  -webkit-border-image: url(../images/dreadnaught/textfield-noshadow.png) 15 15 15 15 stretch stretch;
+}
+
+.spaz-dark .palm-group .palm-row.first .textfield-group.focused {
+  border-width: 15px;
+  -webkit-border-image: url(../images/dreadnaught/group-textfield-shadow-first-dark.png) 15 15 15 15 stretch stretch;
+}
+.spaz-dark .palm-group .palm-row.last .textfield-group.focused {
+  border-width: 15px;
+  -webkit-border-image: url(../images/dreadnaught/group-textfield-shadow-last-dark.png) 15 15 15 15 stretch stretch;
+}
+.spaz-dark .palm-group .palm-row.single .textfield-group.focused {
+  border-width: 15px;
+  -webkit-border-image: url(../images/dreadnaught/group-textfield-shadow-single-dark.png) 15 15 15 15 stretch stretch;
+}
+
+.spaz-dark .textfield-group.floating {
+  border-width: 15px;
+  -webkit-border-image: url(../images/dreadnaught/textfield-floating-dark-blur.png) 15 15 15 15 stretch stretch;
+}
+.spaz-dark .textfield-group.floating.focused {
+  border-width: 15px;
+  -webkit-border-image: url(../images/dreadnaught/textfield-floating-dark.png) 15 15 15 15 stretch stretch;
+}
+
+.spaz-dark .palm-combobox {
+  -webkit-border-image: url(../images/dreadnaught/combobox-dark-background.png) 45 20 0 20 repeat repeat;
+}
+.spaz-dark .combo-selector-button {
+  background:url(../images/dreadnaught/combobox-dark-button.png) center right no-repeat;
+}
+.spaz-dark .combo-selector-button.selected {
+  background-image:url(../images/dreadnaught/combobox-button-press.png);
+}
+.spaz-dark .palm-combobox-textfield .truncating-text,
+.spaz-dark .palm-combobox-textfield input {   
+  color:white;
+}
+
+
+.spaz-dark .palm-dialog-content,
+.spaz-dark .palm-dialog-content .hint-text,
+.spaz-dark .palm-dialog-content .textfield-group .hint-text,
+.spaz-dark .palm-dialog-content .multiline-hint-text {
+  color: #000;
+}
+
+.spaz-dark .palm-dialog-content .focused .hint-text,
+.spaz-dark .palm-dialog-content .textfield-group.focused .hint-text,
+.spaz-dark .palm-dialog-content .focused .multiline-hint-text {
+  color: #898989;
+}
+
+.spaz-dark .palm-dialog-content > .textfield-group input {
+  color: black !important;
+}
+
+.spaz-dark .palm-dialog-content > .textfield-group {
+	color: black !important;
+  -webkit-border-image: url(../images/dreadnaught/textfield-shadow-dialog-blur.png) 15 15 15 15 stretch stretch;
+}
+
+.spaz-dark .palm-dialog-content a {
+  color: #00c;
+}
+
+.spaz-dark .palm-dialog-content a:active {
+  color: #f00;
+}
+
+.spaz-dark .palm-dialog-content a:visited {
+  color: #551a8b;
+}
+
+.spaz-dark .palm-dialog-content > .textfield-group.focused {
+  -webkit-border-image: url(../images/dreadnaught/textfield-shadow-dialog.png) 15 15 15 15 stretch stretch;
+}
+
+/* Inline form errors */
+.spaz-dark .palm-inline-error .error-message {
+  color: #ffcc00;
+}
+
+.spaz-dark .palm-dialog-content .palm-inline-error .error-message {
+	color: #d70000;
+}
+
+
+/*
+   Mojo Styling : Dark
+   Mojo Application Framework
+   Copyright (c) 2007-2009, Palm Inc.
+   All rights reserved.
+
+*/
+
+.spaz-dark a {
+  color: #69a8f5;
+}
+
+.spaz-dark a:active {
+  color: #ff7474;
+}
+
+.spaz-dark a:visited {
+  color: #b874f6;
+}
+
+body.spaz-dark {
+  color: #fff;
+  background: #393e43;
+}
+
+.spaz-dark .palm-info-text,
+.spaz-dark .palm-body-text {
+  color: #ccc;
+}
+
+.spaz-dark .palm-body-title {
+  color: #fff;
+}
+
+.spaz-dark .checkbox {
+  background: url(../images/dreadnaught/checkbox-dark.png) top no-repeat;
+}
+.spaz-dark .checkbox.true {
+  background: url(../images/dreadnaught/checkbox-dark.png) bottom no-repeat;
+}
+.spaz-dark .checkbox.disabled {
+  background: url(../images/dreadnaught/checkbox-disabled-dark.png) top no-repeat;
+}
+.spaz-dark .checkbox.true.disabled {
+  background: url(../images/dreadnaught/checkbox-disabled-dark.png) bottom no-repeat;
+}
+
+.spaz-dark .palm-activity-indicator-small,
+#palm-app-menu .palm-activity-indicator-small,
+#palm-device-menu .palm-activity-indicator-small {
+  background: url(../images/dreadnaught/activity-indicator-32x32-dark.png) center top no-repeat;
+}
+#palm-app-menu .palm-activity-indicator-small,
+#palm-device-menu .palm-activity-indicator-small {
+  margin-top: -3px;
+  margin-bottom: -4px;
+}
+.spaz-dark .palm-activity-indicator-large {
+  background: url(../images/dreadnaught/activity-indicator-128x128-dark.png) center top no-repeat;
+}
+.spaz-dark .sliding-toggle {
+  -webkit-border-image: url(../images/dreadnaught/header-toggle-background-dark.png) 9 29 9 29 repeat repeat;
+}
+.spaz-dark .toggle-button.true {
+  background: url(../images/dreadnaught/header-toggle-on-dark.png);
+}
+.spaz-dark .toggle-button.false {
+  background: url(../images/dreadnaught/header-toggle-off-dark.png);
+}
+
+/*
+   Button Styling : Dark
+   Mojo Application Framework
+   Copyright (c) 2007-2009, Palm Inc.
+   All rights reserved.
+
+*/
+
+.spaz-dark .palm-button.primary,
+.spaz-dark .palm-button {
+  -webkit-border-image: url(../images/dreadnaught/palm-button-dark.png) 0 17 104 17 repeat repeat;
+}
+
+.spaz-dark .palm-button.selected.primary,
+.spaz-dark .palm-button.selected {
+  -webkit-border-image: url(../images/dreadnaught/palm-button-dark.png) 52 17 52 17 repeat repeat;
+}
+
+.spaz-dark .palm-button.disabled.primary,
+.spaz-dark .palm-button.disabled {
+  color: #999;
+  -webkit-border-image: url(../images/dreadnaught/palm-button-dark.png) 104 17 0 17 repeat repeat;
+}
+
+.spaz-dark .palm-button.secondary,
+.spaz-dark .palm-button.dismiss {
+  color: #fff;
+  -webkit-border-image: url(../images/dreadnaught/palm-button-medium.png) 0 17 104 17 repeat repeat;
+}
+
+.spaz-dark .palm-button.secondary.selected,
+.spaz-dark .palm-button.dismiss.selected {
+  color: #fff;
+  -webkit-border-image: url(../images/dreadnaught/palm-button-medium.png) 52 17 52 17 repeat repeat;
+}
+
+.spaz-dark .palm-button.disabled.secondary,
+.spaz-dark .palm-button.disabled.dismiss {
+  color: #999;
+  -webkit-border-image: url(../images/dreadnaught/palm-button-medium.png) 104 17 0 17 repeat repeat;
+}
+
+.spaz-dark .palm-swipe-delete-button {
+  -webkit-border-image: url(../images/dreadnaught/swipe-delete-button-down-dark.png) 0 14 0 14 repeat repeat;
+  -webkit-border-image: url(../images/dreadnaught/swipe-delete-button-up-dark.png) 0 14 0 14 repeat repeat;
+}
+
+.spaz-dark .palm-swipe-delete-button.selected {
+  -webkit-border-image: url(../images/dreadnaught/swipe-delete-button-down-dark.png) 0 14 0 14 repeat repeat;
+}
+
+.spaz-dark .palm-button.negative {
+  color: #fff;
+  -webkit-border-image: url(../images/dreadnaught/palm-button-negative.png) 0 17 104 17 repeat repeat;
+}
+
+.spaz-dark .palm-button.negative.selected {
+  -webkit-border-image: url(../images/dreadnaught/palm-button-negative.png) 52 17 52 17 repeat repeat;
+}
+
+.spaz-dark .palm-button.negative.disabled {
+  color: #999;
+  -webkit-border-image: url(../images/dreadnaught/palm-button-negative.png) 104 17 0 17 repeat repeat;
+}
+
+.spaz-dark .palm-button.affirmative {
+  color: #fff;
+  -webkit-border-image: url(../images/dreadnaught/palm-button-affirmative.png) 0 17 104 17 repeat repeat;
+}
+
+.spaz-dark .palm-button.affirmative.selected {
+  -webkit-border-image: url(../images/dreadnaught/palm-button-affirmative.png) 52 17 52 17 repeat repeat;
+}
+
+.spaz-dark .palm-button.affirmative.disabled {
+  color: #999;
+  -webkit-border-image: url(../images/dreadnaught/palm-button-affirmative.png) 104 17 0 17 repeat repeat;
+}
+
+.spaz-dark .palm-swipe-undo-button {
+  -webkit-border-image: url(../images/dreadnaught/swipe-undo-button-down-dark.png) 0 14 0 14 repeat repeat;
+  -webkit-border-image: url(../images/dreadnaught/swipe-undo-button-up-dark.png) 0 14 0 14 repeat repeat;
+}
+
+.spaz-dark .palm-swipe-undo-button.selected {
+  -webkit-border-image: url(../images/dreadnaught/swipe-undo-button-down-dark.png) 0 14 0 14 repeat repeat;
+}
+
+.spaz-dark .palm-button.small-button {
+  -webkit-border-image: url(../images/dreadnaught/palm-button-small-dark.png) 0 16 68 16 repeat repeat;
+}
+
+.spaz-dark .palm-button.selected.small-button {
+  -webkit-border-image: url(../images/dreadnaught/palm-button-small-dark.png) 34 16 34 16 repeat repeat;
+}
+
+.spaz-dark .palm-button.disabled.small-button {
+  -webkit-border-image: url(../images/dreadnaught/palm-button-small-dark.png) 68 16 0 16 repeat repeat;
+}

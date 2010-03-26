@@ -270,6 +270,17 @@ Spaz.closeDashboard = function(name) {
 
 
 
+Spaz.setTheme = function(name) {
+	alert(name);
+	jQuery('link[title="apptheme"]').attr('href', Spaz.getThemePath(name));
+};
+
+
+Spaz.getThemePath = function(name) {
+	return spaz_themes[name];
+};
+
+
 /*
 	We don't namespace these because they're just so darn simple
 */
