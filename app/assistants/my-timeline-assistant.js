@@ -7,9 +7,9 @@
 function MyTimelineAssistant(argFromPusher) {
 	
 	/* this is the creator function for your scene assistant object. It will be passed all the 
-	   additional parameters (after the scene name) that were passed to pushScene. The reference
-	   to the scene controller (this.controller) has not be established yet, so any initialization
-	   that needs the scene controller should be done in the setup function below. */
+		 additional parameters (after the scene name) that were passed to pushScene. The reference
+		 to the scene controller (this.controller) has not be established yet, so any initialization
+		 that needs the scene controller should be done in the setup function below. */
 	scene_helpers.addCommonSceneMethods(this);
 	
 	var thisA = this;
@@ -23,7 +23,7 @@ function MyTimelineAssistant(argFromPusher) {
 	
 
 
-	this.cacheVersion = 3;  // we increment this when we change how the cache works
+	this.cacheVersion = 3;	// we increment this when we change how the cache works
 	
 	
 	this.cacheDepot = makeCacheDepot(false);
@@ -41,7 +41,7 @@ function MyTimelineAssistant(argFromPusher) {
 		jQuery('.timeline').empty();
 		thisA.twit.setLastId(SPAZCORE_SECTION_HOME, 0);
 		thisA.twit.setLastId(SPAZCORE_SECTION_REPLIES, 0);
-		thisA.twit.setLastId(SPAZCORE_SECTION_DMS,     0);
+		thisA.twit.setLastId(SPAZCORE_SECTION_DMS,		 0);
 
 	};
 	
@@ -81,7 +81,7 @@ MyTimelineAssistant.prototype.setup = function() {
 			
 		],
 		cmdMenuItems: [
-			{label:$L('Compose'),  icon:'compose', command:'compose', shortcut:'N'},
+			{label:$L('Compose'),	 icon:'compose', command:'compose', shortcut:'N'},
 			{
 				/*
 					So we don't get the hard-to-see disabled look on the selected button,
@@ -91,10 +91,10 @@ MyTimelineAssistant.prototype.setup = function() {
 				items: [
 					{label:$L('My Timeline'), icon:'conversation', command:'IGNORE', shortcut:'T', 'class':"palm-header left"},
 					{label:$L('Favorites'), iconPath:'images/theme/menu-icon-favorite.png', command:'favorites', shortcut:'F'},
-					{label:$L('Search'),      icon:'search', command:'search', shortcut:'S'}
+					{label:$L('Search'),		icon:'search', command:'search', shortcut:'S'}
 				]
 			},
-			{label: $L('Refresh'),   icon:'sync', command:'refresh', shortcut:'R'}
+			{label: $L('Refresh'),	 icon:'sync', command:'refresh', shortcut:'R'}
 			
 		]
 	});
@@ -103,7 +103,7 @@ MyTimelineAssistant.prototype.setup = function() {
 	this.timelineFilterMenuModel = {
 		items: [
 				{label:$L('Show All Messages'),				secondaryIconPath:'', command:'filter-timeline-all'}, 
-				{label:$L('Replies and Direct Messages'),	secondaryIconPath:'', command:'filter-timeline-replies-dm'}, 
+				{label:$L('Replies and Direct Messages'), secondaryIconPath:'', command:'filter-timeline-replies-dm'}, 
 				{label:$L('Just Replies'),					secondaryIconPath:'', command:'filter-timeline-replies'}, 
 				{label:$L('Just Direct Messages'),			secondaryIconPath:'', command:'filter-timeline-dms'}
 		]
@@ -111,7 +111,7 @@ MyTimelineAssistant.prototype.setup = function() {
 
 	// Set up submenu widget that was wired into the viewMenu above
 	this.controller.setupWidget("filter-menu", undefined, this.timelineFilterMenuModel);
-  this.controller.setupWidget("timeline-filter", {delay: 500}, {});
+	this.controller.setupWidget("timeline-filter", {delay: 500}, {});
 	
 	this.setupInlineSpinner('activity-spinner-my-timeline');
 	
@@ -147,7 +147,7 @@ MyTimelineAssistant.prototype.activate = function(params) {
 	this.bindTimelineEntryTaps('#my-timeline');
 	this.controller.listen("my-timeline", Mojo.Event.listTap, this.handleTimelineTap);
 	this.controller.listen("timeline-filter", Mojo.Event.filter, this.handleFilterField.bind(this));
-  this.filterField = this.controller.get("timeline-filter");
+	this.filterField = this.controller.get("timeline-filter");
 
 	/*
 		start the mytimeline 
@@ -165,7 +165,7 @@ MyTimelineAssistant.prototype.deactivate = function(event) {
 	sch.debug('DEACTIVATE');
 	
 	/* remove any event handlers you added in activate and do any other cleanup that should happen before
-	   this scene is popped or another scene is pushed on top */
+		 this scene is popped or another scene is pushed on top */
 	
 	/*
 		stop listening for timeline entry taps
@@ -191,7 +191,7 @@ MyTimelineAssistant.prototype.cleanup = function(event) {
 	sch.dump('CLEANUP');
 	
 	/* this function should do any cleanup needed before the scene is destroyed as 
-	   a result of being popped off the scene stack */
+		 a result of being popped off the scene stack */
 	
 	// jQuery(document).unbind('load_from_mytimeline_cache_done');
 
@@ -212,22 +212,27 @@ MyTimelineAssistant.prototype.cleanup = function(event) {
 MyTimelineAssistant.prototype.initTimeline = function() {
 	
 	sch.debug('initializing Timeline in assistant');
-  // TODO: Timeline list widget
+	// TODO: Timeline list widget
 	this.timelineModel = {items: []};
-	this.controller.setupWidget("my-timeline", {
-    itemTemplate: "shared/tweet", 
-    hasNoWidgets: true, 
-    lookahead: 20, 
-    renderLimit: 20,
-    formatters: this.formatters }, this.timelineModel);
-    
+	this.controller.setupWidget(
+		"my-timeline",
+		{
+			itemTemplate: "shared/tweet", 
+			hasNoWidgets: true, 
+			lookahead: 20, 
+			renderLimit: 20,
+			formatters: this.formatters
+		},
+		this.timelineModel
+	);
+	
 
 	
 	var thisA = this;
 	/*
 		set up the combined "my" timeline
 	*/
-	this.mytl   = new SpazTimeline({
+	this.mytl = new SpazTimeline({
 		'timeline_container_selector' :'#my-timeline',
 		'entry_relative_time_selector':'span.date',
 		
@@ -243,37 +248,37 @@ MyTimelineAssistant.prototype.initTimeline = function() {
 		},
 		'data_success': function(e, data) {
 			var previous_count = thisA.timelineModel.items.length;
-		  // set last since_id for setting new class on entries
+			// set last since_id for setting new class on entries
 			if(thisA.timelineModel.items.length > 0)
-        thisA.last_created_at_unixtime = thisA.timelineModel.items[0].SC_created_at_unixtime;
-      else
-        thisA.last_created_at_unixtime = -1;
-        
+				thisA.last_created_at_unixtime = thisA.timelineModel.items[0].SC_created_at_unixtime;
+			else
+				thisA.last_created_at_unixtime = -1;
+		
 			var tweet;
 			for (var i=0, j = data.length; i < j; i++) {
-			  tweet = data[i];
-			  tweet.text = Spaz.makeItemsClickable(tweet.text);
-			  if(tweet.sender) {
-			    tweet.user = tweet.sender;
-			    tweet.sender = null;
-			  }
+				tweet = data[i];
+				tweet.text = Spaz.makeItemsClickable(tweet.text);
+				if(tweet.sender) {
+					tweet.user = tweet.sender;
+					tweet.sender = null;
+				}
 				sc.app.Tweets.save(tweet);
 			};
 			
 			Mojo.Log.error("About to render timeline");
-      thisA.filterTimeline();
+			thisA.filterTimeline();
 
 			/*
 				Get new counts
 			*/
-			var new_count         = data.select(function(tweet) {
-			  return !tweet.not_new;
+			var new_count			= data.select(function(tweet) {
+				return !tweet.not_new;
 			}).length;
 			var new_mention_count = data.select(function(tweet) {
-			  return (!tweet.not_new && tweet.SC_is_reply);
+				return (!tweet.not_new && tweet.SC_is_reply);
 			}).length;
-			var new_dm_count      = data.select(function(tweet) {
-			  return (!tweet.not_new && tweet.SC_is_dm);
+			var new_dm_count		= data.select(function(tweet) {
+				return (!tweet.not_new && tweet.SC_is_dm);
 			}).length;
 			
 			/*
@@ -351,6 +356,8 @@ MyTimelineAssistant.prototype.cleanupTimeline = function() {
 
 MyTimelineAssistant.prototype.loadTimelineCache = function() {
 	
+	return; // DON'T BOTHER ATM
+	
 	var thisA = this;
 
 	this._loadTimelineCache = function() {
@@ -359,7 +366,7 @@ MyTimelineAssistant.prototype.loadTimelineCache = function() {
 		if (data !== null) {
 			thisA.twit.setLastId(SPAZCORE_SECTION_HOME, data[SPAZCORE_SECTION_HOME + '_lastid']);
 			thisA.twit.setLastId(SPAZCORE_SECTION_REPLIES, data[SPAZCORE_SECTION_REPLIES + '_lastid']);
-			thisA.twit.setLastId(SPAZCORE_SECTION_DMS,     data[SPAZCORE_SECTION_DMS     + '_lastid']);
+			thisA.twit.setLastId(SPAZCORE_SECTION_DMS,		 data[SPAZCORE_SECTION_DMS	 + '_lastid']);
 
 			document.getElementById('my-timeline').innerHTML = data.tweets_html;
 			sch.markAllAsRead('#my-timeline div.timeline-entry');
@@ -385,22 +392,24 @@ MyTimelineAssistant.prototype.loadTimelineCache = function() {
 
 MyTimelineAssistant.prototype.saveTimelineCache = function() {
 	
+	return; // DON'T BOTHER ATM
+	
 	var tweetsModel_html = document.getElementById('my-timeline').innerHTML;
 	
 	sch.dump(tweetsModel_html);
 	
 	var twitdata = {};
-	twitdata['version']                            = this.cacheVersion || -1;
-	twitdata['tweets_html']                        = tweetsModel_html;
+	twitdata['version']								 = this.cacheVersion || -1;
+	twitdata['tweets_html']							 = tweetsModel_html;
 	twitdata[SPAZCORE_SECTION_HOME + '_lastid'] = this.twit.getLastId(SPAZCORE_SECTION_HOME);
 	twitdata[SPAZCORE_SECTION_REPLIES + '_lastid'] = this.twit.getLastId(SPAZCORE_SECTION_REPLIES);
-	twitdata[SPAZCORE_SECTION_DMS     + '_lastid'] = this.twit.getLastId(SPAZCORE_SECTION_DMS);
+	twitdata[SPAZCORE_SECTION_DMS		+ '_lastid'] = this.twit.getLastId(SPAZCORE_SECTION_DMS);
 	
 	sch.debug(twitdata);
 	sch.debug('LASTIDS!');
 	sch.debug(twitdata[SPAZCORE_SECTION_HOME + '_lastid']);
 	sch.debug(twitdata[SPAZCORE_SECTION_REPLIES + '_lastid']);
-	sch.debug(twitdata[SPAZCORE_SECTION_DMS     + '_lastid']);
+	sch.debug(twitdata[SPAZCORE_SECTION_DMS		+ '_lastid']);
 	
 		
 	TempCache.save('mytimelinecache', twitdata);
@@ -434,7 +443,7 @@ MyTimelineAssistant.prototype.getData = function() {
 	
 	if ( Mojo.Host.current === Mojo.Host.browser ) {
 		this._getData();
-	}	
+	} 
 	/*
 		only get data if we're connected
 	*/
@@ -522,8 +531,8 @@ MyTimelineAssistant.prototype.removeExtraItems = function() {
 	sch.debug('Removing Extra Items ==================================================');
 
 	sch.debug("normal tweets: " + jQuery('#my-timeline div.timeline-entry:not(.reply):not(.dm)').length);
-	sch.debug("reply tweets: "  + jQuery('#my-timeline div.timeline-entry.reply').length);
-	sch.debug("dm tweets: "     + jQuery('#my-timeline div.timeline-entry.dm').length);
+	sch.debug("reply tweets: "	+ jQuery('#my-timeline div.timeline-entry.reply').length);
+	sch.debug("dm tweets: "		+ jQuery('#my-timeline div.timeline-entry.dm').length);
 
 	/*
 		from html timeline
@@ -536,8 +545,8 @@ MyTimelineAssistant.prototype.removeExtraItems = function() {
 	jQuery('#my-timeline>div:empty').remove(); // remove empty containers
 
 	sch.debug("normal tweets: " + jQuery('#my-timeline div.timeline-entry:not(.reply):not(.dm)').length);
-	sch.debug("reply tweets: "  + jQuery('#my-timeline div.timeline-entry.reply').length);
-	sch.debug("dm tweets: "     + jQuery('#my-timeline div.timeline-entry.dm').length);	
+	sch.debug("reply tweets: "	+ jQuery('#my-timeline div.timeline-entry.reply').length);
+	sch.debug("dm tweets: "		+ jQuery('#my-timeline div.timeline-entry.dm').length); 
 	sch.debug("jQuery('.timeline').children().length:"+jQuery('.timeline').children().length);
 	sch.debug("jQuery('#my-timeline').get(0).outerHTML:\n"+jQuery('#my-timeline').get(0).outerHTML);
 };
@@ -545,7 +554,7 @@ MyTimelineAssistant.prototype.removeExtraItems = function() {
 
 
 /**
- *  
+ *	
  */
 MyTimelineAssistant.prototype.filterTimeline = function(command) {
 	
@@ -556,10 +565,10 @@ MyTimelineAssistant.prototype.filterTimeline = function(command) {
 	
 	
 	var states = [
-					'filter-timeline-all',
-					'filter-timeline-replies-dm',
-					'filter-timeline-replies',
-					'filter-timeline-dms'
+		'filter-timeline-all',
+		'filter-timeline-replies-dm',
+		'filter-timeline-replies',
+		'filter-timeline-dms'
 	];
 	
 	for (var i=0; i < states.length; i++) {
