@@ -4,8 +4,8 @@
  */
 var Tweets = function(replace) {
 	
-	this.bucket = new Lawnchair({name:"ext:tweets"});
-	this.dm_bucket = new Lawnchair({name:"ext:dms"});
+	this.bucket = new Lawnchair({name:"ext:tweets:" + sc.app.username});
+	this.dm_bucket = new Lawnchair({name:"ext:dms:" + sc.app.username});
 	this.user_bucket = new Lawnchair({name:"ext:users"});
 	
 	this.user_bucket.each = function(callback, onFinish) {

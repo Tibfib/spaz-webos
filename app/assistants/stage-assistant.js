@@ -42,7 +42,6 @@ StageAssistant.prototype.initialize = function() {
 	/*
 		model for saving Tweets to Depot. We replace on every start to make sure we don't go over-budget
 	*/
-	sc.app.Tweets = new Tweets(false);
 
 	sc.app.search_cards = [];
 	sc.app.new_search_card = 0;

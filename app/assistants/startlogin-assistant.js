@@ -100,7 +100,10 @@ StartloginAssistant.prototype.setup = function() {
 		sch.debug('sc.app.userid:'	 + sc.app.userid);
 		
 		sc.app.prefs.set('last_userid', sc.app.userid);
-				
+		
+		// maybe place somewhere nicer, just not sure where...
+    sc.app.Tweets = new Tweets(false);
+    		
 		Spaz.popAllAndPushScene("my-timeline");
 	});
 	
