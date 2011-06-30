@@ -107,9 +107,6 @@ MyTimelineAssistant.prototype.setup = function() {
 					{label: $L('Refresh'),  icon:'sync', command:'refresh', shortcut:'R'},
 					{label: App.username, command:'toggle-accounts-panel', width:200},
 					{label: $L('Compose'),  icon:'compose', command:'compose', shortcut:'N'}
-
-					//{label: $L('Filter timeline'), iconPath:'images/theme/menu-icon-triangle-down.png', submenu:'filter-menu'}
-				
 				]
 			}
 			
@@ -126,9 +123,9 @@ MyTimelineAssistant.prototype.setup = function() {
 					{label:$L('My Timeline'), icon:'conversation', command:'filter-timeline-all', shortcut:'T', 'class':"palm-header left"},
 					{label:'@',	icon:'at', command:'filter-timeline-replies'}, 
 					{label:$L('DM'), icon: 'dms', secondaryIconPath:'', command:'filter-timeline-dms'},
-					{label:$L('Favorites'), iconPath:'images/theme/menu-icon-favorite.png', command:'favorites', shortcut:'F'},
-					{label:$L('Friends and Followers'), iconPath:'images/theme/menu-icon-friends-followers.png', command:'friends-followers', shortcut:'L'},
-					{label:$L('Search'),    icon:'search', command:'search', shortcut:'S'}
+					{label:$L('Favorites'), icon:'favorite', command:'favorites', shortcut:'F'},
+					{label:$L('Friends and Followers'), icon:'friends-followers', command:'friends-followers', shortcut:'L'},
+					{label:$L('Search'), icon:'search', command:'search', shortcut:'S'}
 				]
 			},
 			{}
@@ -284,7 +281,11 @@ MyTimelineAssistant.prototype.setup = function() {
 	};
 	
 	
+	this.showFollowSpazPopup();
 	
+	this.showDonationPopup();
+	
+	this.showNewVersionPopup();
 };
 
 
@@ -575,6 +576,25 @@ MyTimelineAssistant.prototype.refresh = function(mark_as_read, page) {
 MyTimelineAssistant.prototype.addItems = function(new_items) {
 	
 	Mojo.Log.error("addItems");
+
+	var lastTweetID = false;
+	if (!App.prefs.get('timeline-scrollonupdate')) {
+		// remember first visible item
+		for (var i=0; i<this.timeline_model.items.length; i++) {
+			Mojo.Log.error("index", i);
+			var itemNode = this.timeline_list.mojo.getNodeByIndex(i);
+			if (itemNode !== undefined) {
+				Mojo.Log.error("node %j", itemNode);
+				var offset = Element.viewportOffset (itemNode);
+				Mojo.Log.error("offset", offset.top);
+				if (offset.top > 0) {
+					lastTweetID = this.timeline_model.items[i].data.id;
+					Mojo.Log.error("index", i, "offset", offset.top, "id", lastTweetID, this.timeline_model.items[i].data.text);
+					break;
+				}
+			}
+		}
+	}
 	
 	// now we have all the existing items from the model
 	var model_items = App.master_timeline_model.items.clone();
@@ -606,6 +626,26 @@ MyTimelineAssistant.prototype.addItems = function(new_items) {
 	
 	// this filters and updates the model
 	this.filterTimeline(null, false, true);	
+
+	if (!App.prefs.get('timeline-scrollonupdate') && lastTweetID) {
+		var lastidx = -1;
+		for (var i=0; i < this.timeline_model.items.length; i++) {
+			if (this.timeline_model.items[i].data.id == lastTweetID) {
+				lastidx = i;
+				break;
+			}
+		}
+
+		if (lastidx >= 0 && (lastidx < this.timeline_model.items.length-1) ) {
+			Mojo.Log.error('Revealing item:', lastidx, this.timeline_model.items[i].data.text);
+			this.timeline_list.mojo.revealItem(lastidx, false);
+			var itemNode = this.timeline_list.mojo.getNodeByIndex(i);
+			if (itemNode !== undefined) {
+				Mojo.Log.error("node %j", itemNode);
+				Element.scrollTo(itemNode);
+			}
+		}
+	}
 };
 
 
@@ -762,7 +802,7 @@ MyTimelineAssistant.prototype.filterTimeline = function(command, scroll_to_top, 
 		this.controller.modelChanged(this.timeline_model);
 		return;
 	}
-	
+
 	// reset the timeline_model
 	this.timeline_model.items = [];
 
@@ -817,23 +857,25 @@ MyTimelineAssistant.prototype.filterTimeline = function(command, scroll_to_top, 
 		scroll me!
 	*/
 	
-	if (scroll_to_top || scroll_to_new) {
-		this.resetScrollstate();
-
-		if (scroll_to_top) {
-			if(App[command + "-scroll-position"]){
-				this.scroller.mojo.setState(App[command + "-scroll-position"], false);
-			}else {
-				this.scrollToTop();
+	if (App.prefs.get('timeline-scrollonupdate')) {
+		if (scroll_to_top || scroll_to_new) {
+			this.resetScrollstate();
+	
+			if (scroll_to_top) {
+				if(App[command + "-scroll-position"]){
+					this.scroller.mojo.setState(App[command + "-scroll-position"], false);
+				}else {
+					this.scrollToTop();
+				}
 			}
+			if (App.prefs.get('timeline-scrollonupdate') && scroll_to_new) {
+				if (this.isTopmostScene()) {
+					this.scrollToNew();
+				}
+			}
+		} else {
+			this.resetScrollstate();	
 		}
-		if (App.prefs.get('timeline-scrollonupdate') && scroll_to_new) {
-			if (this.isTopmostScene()) {
-				this.scrollToNew();
-			}
-		}		
-	} else {
-		this.resetScrollstate();	
 	}
 	
 	
